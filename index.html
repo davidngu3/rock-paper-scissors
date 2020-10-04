@@ -1,73 +1,17 @@
-<script>
-    // randomly generates one of Rock, Paper or Scissors
-    function computerPlay() {
-        var selections = ["Rock", "Paper", "Scissors"];
-        var randIndex = Math.floor(Math.random() * 3);
-        return selections[randIndex];
-    }
+<html>
+    <head>
 
-    // Returns 1 if player wins round, -1 if player loses round, 0 if it's a tie
-    function playRound(playerSelection, computerSelection) {
-        // Winning condition
-        if (playerSelection.toLowerCase() == 'rock' && computerSelection == "Scissors"
-            || playerSelection.toLowerCase() == 'paper' && computerSelection == "Rock"
-            || playerSelection.toLowerCase() == 'scissors' && computerSelection == "Paper") {
-                console.log(`You win! ${toTitleCase(playerSelection)} beats ${computerSelection}`);
-                return 1;
-        }   
-        // Losing condition
-        else if (playerSelection.toLowerCase() == 'rock' && computerSelection == "Paper"
-            || playerSelection.toLowerCase() == 'paper' && computerSelection == "Scissors"
-            || playerSelection.toLowerCase() == 'scissors' && computerSelection == "Rock") {
-                console.log(`You lose! ${computerSelection} beats ${toTitleCase(playerSelection)}`);
-                return -1;
-        }   
-        // Tie
-        else { 
-            console.log(`It's a Draw! You both chose ${computerSelection}`);
-            return 0;
-        }
-    }
+    </head>
+    <body>
+        <div id="results">
+            <p id="playerScore">0</p>
+            <p id="computerScore">0</p>
+            <p id="announcement"></p>
+        </div>
+        <button id="btnRock">Rock</button>
+        <button id="btnScissors">Paper</button>
+        <button id="btnPaper">Scissors</button>
 
-    // main function, plays 5 rounds and prints outcome
-    function game() {
-        // initialize scores
-        let playerScore = 0;
-        let computerScore = 0;
-
-        // play 5 rounds
-        for (let i = 0; i < 5; i++) {
-            let playerSelection = prompt("Choose rock, paper or scissors: ");
-            let computerSelection = computerPlay();
-            let roundResult = playRound(playerSelection, computerSelection);
-
-            // Player wins
-            if (roundResult == 1) {
-                playerScore++;
-            } 
-            // Computer wins
-            else if (roundResult == -1) {
-                computerScore++;
-            } 
-        }
-
-        // print game result
-        if (playerScore > computerScore) {
-            console.log(`You won! ${playerScore} to ${computerScore}`);
-        } 
-        else if (computerScore > playerScore) {
-            console.log(`Better luck next time. ${playerScore} to ${computerScore}`);
-        } 
-        else {
-            console.log(`It was a tie! ${playerScore} to ${computerScore}`);
-        }
-    }
-
-    // helper function for neater result printing
-    function toTitleCase(string) {
-        return string[0].toUpperCase() + string.slice(1).toLowerCase();
-    }
-
-    game();
-
-</script>
+        <script src="app.js"></script>
+    </body>
+</html>
